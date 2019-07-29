@@ -1,28 +1,28 @@
-# ***DJI Super-Patcher 1.7***
+# ***DJI Super-Patcher 1.7.1***
 
-*For unlocking height limits, NFZ limits, Galileo Satellites, fixed fcc and boost + more for the Mavic Pro/Mavic Pro Platinum/Mavic Pro Alpine White, and Spark. Other aircraft coming soon 
+*For unlocking height limits, NFZ limits, Galileo Satellites, fixed fcc and boost + more for DJI Aircraft. 
 ***************************************************************************************************************************
-***1.7 UPDATES***
+***1.7.1 UPDATES***
 
-- Added Phantom 4 Standard support
+- V1.7.1 has been updated remotely no need too download anything new
 
-- Added Phantom 4 Advanced support 
-
-- Fixed some GUI bugs (will no longer ask if you want jkson if its not avilible for your aircraft) 
+- Added Phantom 4 Pro V2 support for firmware V01.00.1500 (note: v1.8 Beta has a newer FW availible for P4Pv2 but that is still in beta.)
 
 -------------------------------------------------------------------------------------------------------------------------
 
 Super-Patcher now supports the following aircraft and firmwares:
 
-- Mavic Pro 1.04.0300
+- Mavic Pro V01.04.0300
 
-- Spark 1.00.0900 
+- Spark V01.00.0900 
 
-- Phantom 4 Pro 1.05.0600
+- Phantom 4 Pro V01.05.0600
  
-- Phantom 4 standard 2.00.0700
+- Phantom 4 standard V2.00.0700
  
-- Phantom 4 advanced 1.00.0128
+- Phantom 4 advanced V1.00.0128
+
+- Phantom 4 ProV2 V01.00.1500
 
 -------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------
@@ -39,9 +39,9 @@ This package is for installing a custom 306 flight controller for:
 
 - ***Phantom 4 advanced*** running a 100% sotock version of the v1.00.0128 firmware.
 
-- ***Phantom 4 Standard*** running a 100% stock version of the v2.00.0700. 
+- ***Phantom 4 Standard*** running a 100% stock version of the v2.00.0700 firmware. 
 
-
+- ***Phantom 4 ProV2*** running a 100% stock version of the V01.00.1500 firmware.
 
 The purpose of this project is to enable even the most technically challenged among us the ability to be liberated from the limitations imposed by DJI and reap the benefits of the other features enabled by the FC_Patcher project https://github.com/o-gs/DJI_FC_Patcher by Matioupi.
 
@@ -191,23 +191,27 @@ These are optional
       
 **PREREQUSITES**
 
-- Mavic Pro or Mavic Pro Platinum has to be STOCK v01.04.0300 fw for all modules
+- ***Mavic Pro***; ***Mavic Pro Platinum***; or ***Mavic Pro Alpine White*** has to be running STOCK ***V01.04.0300*** fw for all modules
 
 or
 
-- Spark has to be STOCK V01.00.0900 fw for all modules 
+- ***Spark*** has to be running STOCK ***V01.00.0900*** fw for all modules 
 
 or
 
-- Phantom 4 Professional has to be on STOCK v1.05.0600 fw for all modules
+- ***Phantom 4 Professional*** has to be running on STOCK ***V1.05.0600*** fw for all modules
 
 or
 
-- Phantom 4 standard has to be on 2.00.0700  fw for all modules
+- ***Phantom 4 Standard*** has to be running on ***V02.00.0700***  fw for all modules
 
 or
 
-- Phantom 4 advanced has to be on 1.00.0128 fw for all modules
+- ***Phantom 4 Advanced*** has to be running on ***V01.00.0128*** fw for all modules
+
+or 
+
+***Phantom 4 ProV2*** running a 100% stock version of the ***V01.00.1500*** firmware for all modules 
 
 
   - *This means if your firmware is mixed with the flight controller of another firmware, even though it says you are on the correct firmware, you will need to flash a stock version of the correct firmware for you aircraft listed above TWICE to ensure all modules get flashed.* 
@@ -273,9 +277,21 @@ Done!
 
 **A. No, Super-Patcher doesn’t do anything with the controller and it makes no difference which controller firmware you are using.**
 
+*Q. There is a parameter called g_config_fw_cfg_max_speed=10 that increased the max flight speed and I was told to increase this to 20 so I can fly faster but when I try to adjust this parameter in Assistant 2 it reverts back to 10 when I reboot the aircraft. How to I change this parameter so I can increase flight speed? 
+
+**A. The parameter** g_config_fw_cfg_max_speed=10 **does not affect flight speed. The parameters that control max flight speed end with** "_cfg_tilt_atti_range" **and** "_cfg_rc_scale"**each mode has a parameter like this that will adjust the max speed in each mode. g_config_fw_cfg_max_speed=10 was misidentified and somepoint in the past as a max flight speed parameter but it is not. I do not know what it does but I know it does not affect max flight speed. On the newer firmwares this parameter is hardcoded but still visable in Assistant 2 1.1.2 so it will seemingly change in Assistant 2 1.1.2 but in reality it will not let you change it. As far as I am concerned nobody knows what this parameters does.**   
+
+*Q. Is it worth trying this in my Mavic 2? Any idea when Mavic 2 will be available? 
+
+**A. Super-Patcher has zero chance of working on the Mavic 2 at this time. We need a decryption key for Mavic 2’s firmware and a way to gain adb access. Both of those things are above my pay grade**
+
 ***************************************************************************************************************************
 ***************************************************************************************************************************
 
+**Donations are welcome and very much appreciated via paypal but not required at** https://www.paypal.com/paypalme2/brett8883
+
+***************************************************************************************************************************
+***************************************************************************************************************************
 **Acknowledgments**
 
 While I brought everything together into a single easy to use project and maintain this repo, Super-Patcher is the culmination of work of many various other projects, contributors, and beta testers. 
@@ -288,7 +304,7 @@ A special thanks to Matioupi and the OG’s /o-gs/DJI_FC_Patcher https://github.
 
 A special thanks to jezzab and the jezzab/DUMLdore application https://github.com/jezzab/DUMLdore a full copy of which is included in Super-Patcher and without it Super-Patcher would not be possible. 
 
-Thanks to mefisto for his https://github.com/o-gs/dji-firmware-tools and tutoring me on how to use them. 
+Thanks to Mefistotelis for his https://github.com/o-gs/dji-firmware-tools and tutoring me on how to use them. 
 
 Thanks to cs2000 and his DankDroneDownloader https://github.com/cs2000/DankDroneDownloader without which this project would have been much more difficult or impossible. Also thanks to cs2000 for hosting the custom flight controller files and providing continued mentoring. 
 
