@@ -1,12 +1,26 @@
-# ***DJI Super-Patcher 1.7.1***
+<a href="https://github.com/brett8883/DJI_Super-Patcher
+" target="_blank"><img src="https://github.com/brett8883/DJI_Super-Patcher/blob/photos/readmephotos/super-Patcher.png" 
+alt="IMAGE ALT TEXT HERE" width="950" height="180" border="10" /></a>
+
+# ***DJI Super-Patcher 1.7.5***
 
 *For unlocking height limits, NFZ limits, Galileo Satellites, fixed fcc and boost + more for DJI Aircraft. 
 ***************************************************************************************************************************
-***1.7.1 UPDATES***
+**1.7.5 UPDATES**
 
-- V1.7.1 has been updated remotely no need too download anything new
+- Added Inspire 2 support for the V01.02.0200 firmware that has been verified working
+- All online versions of 1.7 will update automatically at runtime
+ - Minor fixes
 
-- Added Phantom 4 Pro V2 support for firmware V01.00.1500 (note: v1.8 Beta has a newer FW availible for P4Pv2 but that is still in beta.)
+**Other recent updates**
+
+- Fixed an issue with the P4P flight controller that did not have all NFZ zones disabled. Whoops...
+- Minor fixes
+   - Downgraded version of adb hoping for better universal support
+   - Fixed visual issue where cmd window would not size large enough to view entire line
+   - Fixed issue where Super Tools folder would not delete at runtime
+
+-Added error logging for adb commands. If user indicates super-Patcher wasnt sucessfull the errorlog file will be generated and deposited in the main Super-Patcher folder
 
 -------------------------------------------------------------------------------------------------------------------------
 
@@ -24,12 +38,14 @@ Super-Patcher now supports the following aircraft and firmwares:
 
 - Phantom 4 ProV2 V01.00.1500
 
+- Inspire 2 V01.02.0200
+
 -------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------
 
 **OBJECTIVE SUMMARY**
 
-This package is for installing a custom 306 flight controller for:
+This package is for installing a custom flight controller for:
 
 - ***Mavic Pro or Mavic Pro Platinum*** running a 100% stock version of the v01.04.0300 firmware.
 
@@ -43,9 +59,25 @@ This package is for installing a custom 306 flight controller for:
 
 - ***Phantom 4 ProV2*** running a 100% stock version of the V01.00.1500 firmware.
 
+- ***Inspire 2*** running a 100% stock version of the ***V01.02.0200***
+
 The purpose of this project is to enable even the most technically challenged among us the ability to be liberated from the limitations imposed by DJI and reap the benefits of the other features enabled by the FC_Patcher project https://github.com/o-gs/DJI_FC_Patcher by Matioupi.
 
 Super-Patcher works differently than other methods for unlocking firmware. It is not a mixed firmware mod. Super-Patcher works by modifying the stock flight controller module already installed on your aircraft. This means you retain a cohesive single firmware version on your bird without the complications that occur with mixed firmware mods. This ability to change the actual firmware itself means that new capabilities are unlocked. Super-Patcher has been tested and verified you can trust that it has been proven but you still use at your own risk.
+***************************************************************************************************************************
+
+**BENEFITS SUMMARY**
+
+*(PLEASE READ THE DETAILED LIST THAT FOLLOWS AS WELL)
+
+- Remove height limitations
+- Remove NFZ and GeoZone limits
+- Enable Galileo satellite reception
+- No motors errors on Mavic Pro Platinum
+- Does NOT require an internal SD card be installed
+- Precision RTH and Precision Landing will work normally
+- Optionally enable slower more cinematic panning (yaw) speed
+- Optionally enable full time FCC or boost mode with jkson_fcc_mod by jkson5 built in (Mavic and P4PV2 Only)
 
 ***************************************************************************************************************************
 **Please carefully read through the through explanation of the benefits below. Directions to get started will follow**
@@ -70,6 +102,16 @@ Super-Patcher works differently than other methods for unlocking firmware. It is
 - Please note that the height limit parameters in Assistant 2 1.1.2 in debug mode will NOT be visable beacuse they are hard-coded to the firmware. These parameters have been modified to disable height limit altogether even though they are not visable.  
 
      **It is always the responsibility of the pilot to fly safely and to know local regulations. **
+
+SEE VIDEO BELOW FOR INFORMATION REGARDING SETTINGS FOR HIGH ALTITUDE FLIGHTS AND HOW TO CONFIGURE THE BATTERY USING ASSISTANT 2 1.1.2 in Debug mode https://dji.retroroms.info/howto/assistanddebug
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=BnNo3lWoXkQ 
+" target="_blank"><img src="https://github.com/brett8883/DJI_Super-Patcher/blob/photos/readmephotos/batteryvideo.PNG" 
+alt="IMAGE ALT TEXT HERE" width="800" height="300" border="10" /></a>
+
+*(Credits to digdat0 for the video)*
+
+
       
 ***************************************************************************************************************************
 
@@ -99,8 +141,6 @@ Super-Patcher works differently than other methods for unlocking firmware. It is
 
     **It is always the responsibility of the pilot to fly safely and to know local regulations.**
 ***************************************************************************************************************************
-   -*For more highly detailed information about hard-coded parameters and other parameters please see the readme.md located in the FirmwareInfo folder or at https://github.com/brett8883/DJI_Super-Patcher/tree/master/FirmwareInfo*
-***************************************************************************************************************************
 
    **Enable Galileo satellite reception by default**
 
@@ -111,6 +151,13 @@ Super-Patcher works differently than other methods for unlocking firmware. It is
 - Typically you can expect to see your sat count at between 20-30 sats once they have all connected
 
 ***************************************************************************************************************************
+  **Motors will restart when aircraft is inverted**
+
+- By default the aircraft will allow the motors to be restarted even if the aircraft is inverted. This parameter is hardcoded and will not be visable in Assistant 2. One can remove the props and hold the aircraft upside down and then arm the motors with a CSC to verify this parameter is working.
+
+- Note: This also means the motors cannot be turned off by turning it upside down. When hand catching use the free hand to push down on the throttle stick (left stick in RC type 2) to turn off the motors when hand catching.
+
+***
 
    **Does NOT require an internal SD card be installed**
 
@@ -141,7 +188,7 @@ Super-Patcher works differently than other methods for unlocking firmware. It is
 
 - Just like any other firmware you can use Assistant 2 1.1.2 in debug modeto turn up the max speed parameters, enable ATTI mode, or virtually endless parameter modifications
 
-- For more information on some of the available parameter mods see howto:parameterhacks [dji.retroroms.info]
+- For more information on some of the available parameter mods see [howto:parameterhacks](https://dji.retroroms.info/howto/parameterhacks) 
 These are optional
 
 ***************************************************************************************************************************
@@ -181,9 +228,19 @@ These are optional
     
 ***************************************************************************************************************************
                                                                
-   **Optional ability to enable full time FCC or FCC boost mode with jkson_fcc_mod by jkson5** https://github.com/jkson5/jkson_fcc_mod
+   **Optionally enable full time FCC or FCC boost mode with jkson_fcc_mod by jkson5**
 
-- This is now integrated with Super-Patcher. You will be asked if you'd like to enable jkson_fcc_mod. Jkson_fcc_mod is only availible for Mavic Pro, Mavic Pro Platinum, and Mavic Pro Artic White on Super-Patcher at this time. P4PV2 coming soon!
+- You will be asked if you'd like to enable jkson_fcc_mod if your aircraft supports it. Jkson_fcc_mod is only availible for Mavic Pro, Mavic Pro Platinum, Mavic Pro Artic White, and P4Pv2
+
+- Jkson mod also allows you to choose between "Auto frequency" (2.4 GHz), fixed 2.3 GHz, and fixed 2.5 GHz.
+	- I highly recommend choosing "Auto-frequency"
+		- 2.3 GHz and 2.5 GHz might be better in 1% of cases but it is very rare and even if they do work better they are more likly to cut video feed without warning because they are fixed to a single channel.
+
+- You can learn more about jkson fcc mod by jkson5 at https://github.com/jkson5/jkson_fcc_mod
+
+- I am not the developer of this mod so questions about it are better directed to jkson5 
+
+- It is included in Super-Patcher because it is a widely used mod and it shares dependancies with Super-Patcher so it made sense to include it for convenience 	
 
     **This is optional**
 ***************************************************************************************************************************
@@ -211,14 +268,17 @@ or
 
 or 
 
-***Phantom 4 ProV2*** running a 100% stock version of the ***V01.00.1500*** firmware for all modules 
+- ***Phantom 4 ProV2*** running a 100% stock version of the ***V01.00.1500*** firmware for all modules
 
+or 
+
+- ***Inspire 2*** running a 100% stock version of the **V01.02.0200** firmware for all modules
 
   - *This means if your firmware is mixed with the flight controller of another firmware, even though it says you are on the correct firmware, you will need to flash a stock version of the correct firmware for you aircraft listed above TWICE to ensure all modules get flashed.* 
           
-    - When in doubt flash the correct stock firmware **TWICE** with DUMLdore 
+    - When in doubt flash the correct stock firmware **TWICE** with [DUMLdore](https://github.com/jezzab/DUMLdore/releases/tag/v3.20)
         
-- Get correct stock firmware versions with DankDroneDownloader Tool https://github.com/cs2000/DankDroneDownloader:
+- Get correct stock firmware versions with [DankDroneDownloader Tool](https://github.com/cs2000/DankDroneDownloader) :
 
 - Get DUMLdore from here:
 
@@ -286,9 +346,14 @@ Done!
 **A. Super-Patcher has zero chance of working on the Mavic 2 at this time. We need a decryption key for Mavic 2’s firmware and a way to gain adb access. Both of those things are above my pay grade**
 
 ***************************************************************************************************************************
+**Custom work or 1 on 1 help.**
+
+I have put a lot of work into making Super-Patcher as easy as possible and have built many features into Super-Patcher but I understand even so there are people that would rather have it done by a professional. I have been getting an increasing number of requests to do Super-Patcher for clients as a service or to build custom flight controllers with specific features not already in Super-Patcher. I am happy to do 1 on 1 sessions and can do the Super-Patcher process remotely via Team View. My rate for setting up Super-Patcher on one of the drones supported is $30 USD. I would ask that you have a Windows 10 PC and reliable internet access to make the process.
+
+I can be reached at brett8883.dev@gmail.com to discuss *paid* 1 on 1 installations or other custom work. 
 ***************************************************************************************************************************
 
-**Donations are welcome and very much appreciated via paypal but not required at** https://www.paypal.com/paypalme2/brett8883
+# Donations are very welcome and very much appreciated via [paypal.me/brett8883](https://www.paypal.com/paypalme2/brett8883)
 
 ***************************************************************************************************************************
 ***************************************************************************************************************************
@@ -298,22 +363,24 @@ While I brought everything together into a single easy to use project and mainta
 
 A special thanks to Henfri and lukasx for taking the plunge to test this with their birds before knowing what would happen and their continued contributions throughout development.
 
+A special thanks to mstoozler for providing the 0306.unsig for Inspire 2 flight controller and testing the Inspire 2 patch.
+
 Thanks to D95GAS, frank2006, and Kilrah for consulting during initial conceptual development. 
 
-A special thanks to Matioupi and the OG’s /o-gs/DJI_FC_Patcher https://github.com/o-gs/DJI_FC_Patcher project and all its contributors of which Super-Patcher can be considered as a branch of and very much dependent on. DJI_FC_Patcher is the engine that drives this project. Super-Patcher serves as an easy to use deployment of the DJI_FC_Patcher that anyone can use with almost no technical ability.
+A special thanks to Matioupi and the OG’s [/o-gs/DJI_FC_Patcher](https://github.com/o-gs/DJI_FC_Patcher) project and all its contributors of which Super-Patcher can be considered as a branch of and very much dependent on. DJI_FC_Patcher is the engine that drives this project. Super-Patcher serves as an easy to use deployment of the DJI_FC_Patcher that anyone can use with almost no technical ability.
 
-A special thanks to jezzab and the jezzab/DUMLdore application https://github.com/jezzab/DUMLdore a full copy of which is included in Super-Patcher and without it Super-Patcher would not be possible. 
+A special thanks to jezzab and the [jezzab/DUMLdore](https://github.com/jezzab/DUMLdore) application  a full copy of which is included in Super-Patcher and without it Super-Patcher would not be possible. 
 
-Thanks to Mefistotelis for his https://github.com/o-gs/dji-firmware-tools and tutoring me on how to use them. 
+Thanks to Mefistotelis for his [dji-firmware-tools](https://github.com/o-gs/dji-firmware-tools) and tutoring me on how to use them. 
 
-Thanks to cs2000 and his DankDroneDownloader https://github.com/cs2000/DankDroneDownloader without which this project would have been much more difficult or impossible. Also thanks to cs2000 for hosting the custom flight controller files and providing continued mentoring. 
+Thanks to cs2000 and his [DankDroneDownloader](https://github.com/cs2000/DankDroneDownloader) without which this project would have been much more difficult or impossible. Also thanks to cs2000 for hosting the custom flight controller files and providing continued mentoring. 
 
-Thanks to DigDat0 for helping with the 1.3 upgrades which were influenced by his fcchooser project https://github.com/digdat0/fcchooser and for teaching me various programming techniques. 
+Thanks to DigDat0 for helping with the 1.3 upgrades which were influenced by his [fcchooser](https://github.com/digdat0/fcchooser) project and for teaching me various programming techniques. 
 
 Thanks to jkson5 who is the author of the jkson fcc mod which I have barrowed and intregrated into Super-Patcher 1.3 and above 
 
 Thanks to the other OGs who have contributed to the dependencies required for Super-Patche and who have, by making their work open, helped me liberate my drone from the limits imposed on it by DJI and inspired me to help others liberate theirs. 
 
-Thanks to the NoLimitDronez team https://nolimitdronez.com/ for letting me embed their free desktop app into Super-Patcher 
+Thanks to the [NoLimitDronez team](https://nolimitdronez.com/) for letting me embed their free desktop app into Super-Patcher 
 
 There are many whos names I do not know that contributed to the dependencies required for this project. I apologise for not having all of their names acknowleged but I will update this list as I discover them.
